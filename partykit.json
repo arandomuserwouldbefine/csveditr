@@ -1,0 +1,10 @@
+{
+  "$schema": "https://www.partykit.io/schema.json",
+  "name": "csvdata",
+  "main": "party/server.ts",
+  "compatibilityDate": "2024-03-13",
+  "serve": {
+    "path": "public",
+    "build": "app/client.tsx"
+  }
+}
