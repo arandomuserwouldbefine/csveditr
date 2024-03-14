@@ -6,8 +6,11 @@ type DataRowProps = {
     id: string;
     start: string;
     end: string;
-    imageUrl: string;
+    iUrl: string;
   };
+  handleRemoveClickListner: any;
+  handleMoveDown: any;
+  handleMoveUp: any;
 };
 
 export default function Datarow(props: DataRowProps) {
@@ -28,7 +31,7 @@ export default function Datarow(props: DataRowProps) {
       <div className="input-wrapper">
         <input
           type="text"
-          placeholder="0"
+          placeholder="00:00"
           onChange={(e) => setStart(e.target.value)}
           value={start}
         />
@@ -36,21 +39,32 @@ export default function Datarow(props: DataRowProps) {
       <div className="input-wrapper">
         <input
           type="text"
-          placeholder="11:50"
+          placeholder="00:00"
           onChange={(e) => setEnd(e.target.value)}
           value={end}
         />
       </div>
       <div className="action-container">
-        <img src="/Assets/image.jpg" className="row-image" />
+        <div>
+          <iframe className="row-iframe" src={props.data.iUrl}></iframe>
+        </div>
         <div className="row-buttons">
-          <button className="ud-arrow">
+          <button
+            className="ud-arrow"
+            onClick={() => props.handleMoveUp(props.data.id)}
+          >
             <FiChevronUp />
           </button>
-          <button className="min-button">
+          <button
+            className="min-button"
+            onClick={() => props.handleRemoveClickListner(props.data.id)}
+          >
             <FiMinus />
           </button>
-          <button className="ud-arrow">
+          <button
+            className="ud-arrow"
+            onClick={() => props.handleMoveDown(props.data.id)}
+          >
             <FiChevronDown />
           </button>
         </div>
