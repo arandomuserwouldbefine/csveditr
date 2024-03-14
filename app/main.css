@@ -1,0 +1,136 @@
+.main {
+  max-width: 1200px;
+  margin-inline: auto;
+  padding: 20px;
+}
+
+input {
+  padding: 7px 10px;
+  font-size: 16px;
+  border-radius: 5px;
+  border: 2px solid gray;
+  outline: none;
+}
+
+.btn {
+  border: none;
+  outline: none;
+  border-radius: 10px;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+.new-btn {
+  color: white;
+  font-weight: 600;
+  background-color: rgb(23, 23, 23);
+}
+
+.copy-btn {
+  color: rgb(23, 23, 23);
+  font-weight: 600;
+  border: 2px solid rgb(23, 23, 23);
+  background-color: transparent;
+}
+
+.flex-1 {
+  flex: 1;
+}
+
+.main-header {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  justify-content: space-between;
+}
+
+.addNew-header {
+  display: flex;
+  gap: 20px;
+}
+
+.title-input > input {
+  width: 100%;
+}
+
+.grid {
+  display: grid;
+  gap: 25px;
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.row-image {
+  width: 100%;
+  height: 120px;
+  border-radius: 15px;
+  object-fit: cover;
+}
+
+.action-container {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.min-button {
+  width: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 5px;
+  border: 2px solid gray;
+  background: transparent;
+  aspect-ratio: 1;
+  cursor: pointer;
+}
+
+.row-buttons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.ud-arrow {
+  width: 35px;
+  aspect-ratio: 1;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 5px;
+  border: 2px solid gray;
+  background: transparent;
+  cursor: pointer;
+}
+
+.input-wrapper {
+  display: flex;
+  align-items: center;
+}
+
+.input-wrapper input {
+  width: 100%;
+}
+
+.row-header{
+    margin-block: 15px;
+    font-size: 20px;
+    font-weight: 600;
+    text-align: center;
+    border-bottom: 2px solid gray;
+    padding: 20px 0;
+}
+
+.data-row{
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, .15);
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.data-row-container{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
