@@ -27,8 +27,9 @@ export default function Counter() {
     // host defaults to the current URL if not set
     //host: process.env.PARTYKIT_HOST,
     // we could use any room name here
-    room: "example-room",
+    room: "examplfasdfdsa",
     onMessage(evt) {
+      console.log(evt)
       setCount(parseInt(evt.data));
     },
   });

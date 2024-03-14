@@ -1,5 +1,9 @@
 import type * as Party from "partykit/server";
 
+interface Test{
+  id: string;
+}
+
 export default class Server implements Party.Server {
   count = 0;
 
@@ -7,25 +11,18 @@ export default class Server implements Party.Server {
 
   onConnect(conn: Party.Connection, ctx: Party.ConnectionContext) {
     // A websocket just connected!
-    console.log(
-      `Connected:
-  id: ${conn.id}
-  room: ${this.room.id}
-  url: ${new URL(ctx.request.url).pathname}`
-    );
+    console.log(`Connected:id: ${conn.id}room: ${this.room.id}url: ${new URL(ctx.request.url).pathname}`);
 
     // send the current count to the new client
     conn.send(this.count.toString());
   }
 
-  onMessage(message: string, sender: Party.Connection) {
+  async onMessage(message: string, sender: Party.Connection) {
     // let's log the message
-    console.log(`connection ${sender.id} sent message: ${message}`);
-    // we could use a more sophisticated protocol here, such as JSON
-    // in the message data, but for simplicity we just use a string
-    if (message === "increment") {
-      this.increment();
-    }
+    await this.room.storage.put("test",message.split(":")[1])
+    var test:Test | undefined = await this.room.storage.get("test")
+    console.log(test)
+    
   }
 
   onRequest(req: Party.Request) {
