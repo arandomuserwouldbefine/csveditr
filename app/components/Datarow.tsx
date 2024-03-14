@@ -77,7 +77,7 @@ export default function Datarow(props: DataRowProps) {
       </div>
       <div className="action-container">
         <div>
-          <iframe className="row-iframe" height="100px" src={props.data.iUrl}></iframe>
+          <iframe className="row-iframe" height="10px" width="5px" src={props.data.iUrl}></iframe>
         </div>
         <div className="row-buttons">
           <button
