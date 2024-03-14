@@ -1,4 +1,4 @@
-import { useState,useEffect } from "react";
+import { useEffect, useState } from "react";
 import { FiChevronDown, FiChevronUp, FiMinus } from "react-icons/fi";
 import PartySocket from "partysocket";
 
@@ -11,8 +11,12 @@ type DataRowProps = {
     id: string;
     start: string;
     end: string;
-    imageUrl: string;
+    iUrl: string;
   };
+  handleRemoveClickListner: any;
+  handleMoveDown: any;
+  handleMoveUp: any;
+  updateMainData: any;
 };
 
 export default function Datarow(props: DataRowProps) {
@@ -33,6 +37,14 @@ export default function Datarow(props: DataRowProps) {
 
     return () => socket.removeEventListener("message", onIncomingMessage);
   }, []);
+  useEffect(() => {
+    const data = props.data;
+    data.start = start;
+    data.end = end;
+    data.id = id;
+    props.updateMainData(data);
+  }, [id, start, end]);
+
   return (
     <div className="grid data-row">
       <div className="input-wrapper">
@@ -55,6 +67,8 @@ export default function Datarow(props: DataRowProps) {
             socket.send(`start:${e.target.value}`)
             setStart(e.target.value)
           }}
+          placeholder="00:00"
+          onChange={(e) => setStart(e.target.value)}
           value={start}
         />
       </div>
@@ -65,19 +79,32 @@ export default function Datarow(props: DataRowProps) {
           onChange={(e) => {
             socket.send(`end: ${e.target.value}`)
             setEnd(e.target.value)}}
+          placeholder="00:00"
+          onChange={(e) => setEnd(e.target.value)}
           value={end}
         />
       </div>
       <div className="action-container">
-        <img src="/Assets/image.jpg" className="row-image" />
+        <div>
+          <iframe className="row-iframe" src={props.data.iUrl}></iframe>
+        </div>
         <div className="row-buttons">
-          <button className="ud-arrow">
+          <button
+            className="ud-arrow"
+            onClick={() => props.handleMoveUp(props.data.id)}
+          >
             <FiChevronUp />
           </button>
-          <button className="min-button">
+          <button
+            className="min-button"
+            onClick={() => props.handleRemoveClickListner(props.data.id)}
+          >
             <FiMinus />
           </button>
-          <button className="ud-arrow">
+          <button
+            className="ud-arrow"
+            onClick={() => props.handleMoveDown(props.data.id)}
+          >
             <FiChevronDown />
           </button>
         </div>
