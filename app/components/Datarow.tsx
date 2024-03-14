@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { FiChevronDown, FiChevronUp, FiMinus } from "react-icons/fi";
 
 type DataRowProps = {
@@ -11,12 +11,21 @@ type DataRowProps = {
   handleRemoveClickListner: any;
   handleMoveDown: any;
   handleMoveUp: any;
+  updateMainData: any;
 };
 
 export default function Datarow(props: DataRowProps) {
   const [id, setId] = useState(props.data.id || "");
   const [start, setStart] = useState(props.data.start || "");
   const [end, setEnd] = useState(props.data.end || "");
+
+  useEffect(() => {
+    const data = props.data;
+    data.start = start;
+    data.end = end;
+    data.id = id;
+    props.updateMainData(data);
+  }, [id, start, end]);
 
   return (
     <div className="grid data-row">

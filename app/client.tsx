@@ -43,7 +43,7 @@ const data = [
 function App() {
   const [rowData, setRowData] = useState<RowData[]>(data);
 
-  function generateRandomId(length: number) {
+  const generateRandomId = (length: number) => {
     const characters =
       "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
     let id = "";
@@ -52,7 +52,7 @@ function App() {
       id += characters.charAt(randomIndex);
     }
     return id;
-  }
+  };
 
   const handleRemoveClickListner = (id: string) => {
     const newData = rowData.filter((row) => {
@@ -114,6 +114,13 @@ function App() {
     setRowData(data);
   };
 
+  const updateMainData = (data: RowData) => {
+    const newData = [...rowData];
+    const index = newData.findIndex((row) => row.id == data.id);
+    newData[index] = data;
+    setRowData(newData);
+  };
+
   return (
     <main className="main">
       <Header />
@@ -133,6 +140,7 @@ function App() {
             }
             handleMoveDown={(id: string) => handleMoveDown(id)}
             handleMoveUp={(id: string) => handleMoveUp(id)}
+            updateMainData={updateMainData}
           />
         ))}
       </div>
