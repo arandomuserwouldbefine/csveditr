@@ -61,12 +61,7 @@ export default function Datarow(props: DataRowProps) {
       <div className="input-wrapper">
         <input
           type="text"
-          placeholder="0"
           
-          onChange={(e) => {
-            socket.send(`start:${e.target.value}`)
-            setStart(e.target.value)
-          }}
           placeholder="00:00"
           onChange={(e) => setStart(e.target.value)}
           value={start}
@@ -75,10 +70,6 @@ export default function Datarow(props: DataRowProps) {
       <div className="input-wrapper">
         <input
           type="text"
-          placeholder="11:50"
-          onChange={(e) => {
-            socket.send(`end: ${e.target.value}`)
-            setEnd(e.target.value)}}
           placeholder="00:00"
           onChange={(e) => setEnd(e.target.value)}
           value={end}
@@ -86,7 +77,7 @@ export default function Datarow(props: DataRowProps) {
       </div>
       <div className="action-container">
         <div>
-          <iframe className="row-iframe" src={props.data.iUrl}></iframe>
+          <iframe className="row-iframe" height="100px" src={props.data.iUrl}></iframe>
         </div>
         <div className="row-buttons">
           <button
